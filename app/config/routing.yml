@@ -1,0 +1,4 @@
+shprota_todo:
+    resource: "@ShprotaTodoBundle/Resources/config/routing.yml"
+    prefix:   /
+

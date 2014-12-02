@@ -1,0 +1,6 @@
+shprota_todo_homepage:
+    path:     /
+    defaults: { _controller: ShprotaTodoBundle:Default:index }
+items:
+    type:     rest
+    resource: Shprota\TodoBundle\Controller\ItemController

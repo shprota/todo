@@ -1,0 +1,11 @@
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('bundles/shprotatodo/css/todo.css') }}" />
+    <title>Todo</title>
+{% endblock %}
+
+{% block body %}
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+

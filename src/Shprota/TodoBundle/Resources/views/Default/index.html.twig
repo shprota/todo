@@ -1,0 +1,50 @@
+{% extends "ShprotaTodoBundle::layout.html.twig" %}
+{% block content %}
+    <section id="todoapp">
+        <header id="header">
+            <h1>todos</h1>
+            <input id="new-todo" placeholder="What needs to be done?" autofocus>
+        </header>
+        <section id="main">
+            <input id="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul id="todo-list"></ul>
+        </section>
+        <footer id="footer"></footer>
+    </section>
+
+    <script type="text/template" id="item-template">
+        <div class="view">
+            <input class="toggle" type="checkbox" <%= done ? 'checked' : '' %>>
+            <label><%- title %></label>
+            <button class="destroy"></button>
+        </div>
+        <input class="edit" value="<%- title %>">
+    </script>
+    <script type="text/template" id="stats-template">
+        <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+        <ul id="filters">
+            <li>
+                <a class="selected" href="#/">All</a>
+            </li>
+            <li>
+                <a href="#/active">Active</a>
+            </li>
+            <li>
+                <a href="#/done">Completed</a>
+            </li>
+        </ul>
+        <% if (done) { %>
+        <button id="clear-completed">Clear done (<%= done %>)</button>
+        <% } %>
+    </script>
+    <script src="{{ asset('bundles/shprotatodo/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bundles/shprotatodo/js/underscore.js') }}"></script>
+    <script src="{{ asset('bundles/shprotatodo/js/backbone.js') }}"></script>
+    <script src="{{ asset('bundles/shprotatodo/js/todo.js') }}"></script>
+    <script>
+        jQuery(function(){
+            new app.AppView({itemsUrl: '{{ path('get_items') }}'});
+        });
+    </script>
+{% endblock %}
